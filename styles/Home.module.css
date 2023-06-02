@@ -229,7 +229,7 @@
 @media (max-width: 600px) {
   .main {
     padding: 1rem;
-    max-height: 90vh;
+    max-height: 100vh;
   }
 
   .cloud {
