@@ -101,9 +101,6 @@ export default function Home() {
       console.log('messageState', messageState);
 
       setLoading(false);
-
-      //scroll to bottom
-      messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
     } catch (error) {
       setLoading(false);
       setError('An error occurred while fetching the data. Please try again.');
@@ -119,6 +116,13 @@ export default function Home() {
       e.preventDefault();
     }
   };
+
+  useEffect(() => {
+    //scroll to bottom
+    setTimeout(() => {
+      messageListRef.current?.scrollTo(0, messageListRef.current.scrollHeight);
+    }, 0);
+  }, [messages]);
 
   return (
     <>
