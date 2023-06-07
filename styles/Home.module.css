@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 100vh;
   padding: 1rem;
 }
 
@@ -16,6 +17,8 @@
 
 .cloudform {
   position: relative;
+
+  width: 100%;
 }
 
 .textarea {
@@ -185,12 +188,14 @@
   align-items: center;
   position: relative;
   padding: 1rem 0;
+  width: 75vw;
   flex-direction: column;
 }
 
 .cloud {
   width: 75vw;
-  height: 65vh;
+  overflow-y: hidden;
+  flex-grow: 1;
   background: #ffffff;
   border-radius: 0.5rem;
   border: 1px solid #d9d9e3;
@@ -229,16 +234,23 @@
 @media (max-width: 600px) {
   .main {
     padding: 1rem;
-    max-height: 100vh;
+    height: 100vh;
+    justify-content: space-between;
   }
 
   .cloud {
-    width: 22rem;
-    height: 28rem;
+    padding: 16px;
+    width: 100%;
+    height: 100%;
+  }
+  .center {
+    padding: 16px;
+    width: 100vw;
   }
   .textarea {
-    width: 22rem;
+    width: 100%;
   }
+
   .topnav {
     border: 1px solid black;
     align-items: center;
