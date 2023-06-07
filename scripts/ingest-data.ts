@@ -15,6 +15,13 @@ const stemmer = natural.PorterStemmer;
 
 export const run = async () => {
   try {
+    console.log('remove all verctors...');
+    const pineconeIndex = pinecone.Index(PINECONE_INDEX_NAME);
+    await pineconeIndex.delete1({
+      deleteAll: true,
+      namespace: PINECONE_NAME_SPACE,
+    });
+
     const directoryLoader = new DirectoryLoader(filePath, {
       '.pdf': (path) => new PDFLoader(path),
     });
@@ -23,11 +30,15 @@ export const run = async () => {
 
     // Normalize, remove stopwords, and stem the text
     const processedDocs = rawDocs.map((doc) => {
-      let text = String(doc).toLowerCase();
+      let text = String(doc.pageContent).toLowerCase();
+      text = text.replace(/(?<!  )\n/g, '');
       let tokens = tokenizer.tokenize(text);
-      tokens = stopword.removeStopwords(tokens as string[]);
-      tokens = tokens.map((token) => stemmer.stem(token));
-      return { ...doc, text: tokens.join(' ') };
+      // tokens = stopword.removeStopwords(tokens as string[]);
+      // tokens = tokens.map((token) => stemmer.stem(token));
+      return {
+        ...doc,
+        pageContent: text,
+      };
     });
 
     const textSplitter = new RecursiveCharacterTextSplitter({
