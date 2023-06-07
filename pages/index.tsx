@@ -25,7 +25,8 @@ export default function Home() {
   }>({
     messages: [
       {
-        message: 'Hi, what would you like to learn about this document?',
+        message:
+          '안녕하세요. 정부지원사업 공동 신청서에 대해 무엇이든 물어보세요.',
         type: 'apiMessage',
       },
     ],
