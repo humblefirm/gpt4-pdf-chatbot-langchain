@@ -3,12 +3,12 @@ import { PineconeStore } from 'langchain/vectorstores/pinecone';
 import { ConversationalRetrievalQAChain } from 'langchain/chains';
 
 const CONDENSE_PROMPT = `Given the following conversation and a follow up question, rephrase the follow up question to be a standalone question. 
-Please answer technical questions in English
+Please answer technical questions in English. others in korean
 
 Chat History:
 {chat_history}
 Follow Up Input: {question}
-Standalone question in english:`;
+Standalone question:`;
 
 const QA_PROMPT = `You are a helpful AI assistant. Use the following pieces of context to answer in korean the question at the end.
 If you don't know the answer, just say you don't know. DO NOT try to make up an answer.
